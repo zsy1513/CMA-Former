@@ -1,7 +1,5 @@
 # CMA-Former
 
-Code release for the paper:
-
 **CMA-Former: Context-Conditioned Cross-Market Attention for Day-Ahead Electricity
 Price Forecasting**
 
@@ -35,7 +33,7 @@ Raw inputs are obtained from public sources and placed under `data/raw/`
 
 - ENTSO-E Transparency Platform: day-ahead prices, forecast load,
   wind/solar generation forecasts, cross-border physical flows
-  (DE-LU, FR, NL, BE; 2019-01-01 to 2024-12-31, hourly)
+
 - EEX / public sources: daily TTF gas and EUA carbon prices
 
 Build the processed dataset:
@@ -54,22 +52,9 @@ python experiments/evaluate_applied_energy.py             # aggregate metrics
 python experiments/verify_applied_energy_results.py       # verification
 ```
 
-A single model/seed run for debugging:
-
-```bash
-python experiments/run_applied_energy.py --model cma_former --seed 42
-```
-
-Unit tests:
-
-```bash
-pytest tests/ -q
-```
-
 ## Protocol notes
 
-The forecasting protocol is frozen in
-`docs/EXPERIMENT_DESIGN_FREEZE.md`: one forecast per delivery day issued at
+`docs/EXPERIMENT_DESIGNE.md`: one forecast per delivery day issued at
 12:00 local time on D-1, 23/25-hour DST days excluded, training-period-only
 normalization, and causal lag rules for flow and financial series. All
 reported comparisons follow this protocol without modification.
